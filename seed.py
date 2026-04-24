@@ -28,10 +28,14 @@ def seed_electronics(session: Session, count: int) -> None:
         attributes = {
             "battery_life_hours": battery_life,
         }
+        barcode = fake.ean(length=13)
+        price = fake.pricetag()
         product = Product(
             name=name,
             category="electronics",
             description=description,
+            barcode=barcode,
+            price=price,
         )
         product.set_attributes(attributes)
         product.information_score = compute_information_score(
@@ -64,10 +68,14 @@ def seed_grocery(session: Session, count: int) -> None:
             "is_gluten_free": is_gluten_free,
             "is_high_fiber": is_high_fiber,
         }
+        barcode = fake.ean(length=13)
+        price = fake.pricetag()
         product = Product(
             name=name,
             category="grocery",
             description=description,
+            barcode=barcode,
+            price=price,
         )
         product.set_attributes(attributes)
         product.information_score = compute_information_score(
